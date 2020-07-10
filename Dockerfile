@@ -4,11 +4,8 @@ FROM ubuntu:18.04
 RUN mkdir -p /usr/local/bin/
 COPY files/local/avrdude /usr/local/bin/avrdude
 RUN chmod 755 /usr/local/bin/avrdude
-RUN curl http://ee.usc.edu/~redekopp/ee109/avr.tar.gz -o /tmp/avr.tar.gz
-WORKDIR /usr/local
-RUN tar xfz /tmp/avr.tar.gz
-#RUN sudo usermod -a -G dialout user_name
 COPY files/root/* /root/
+
 
 
 # Make sure line endings are Unix
@@ -23,12 +20,18 @@ RUN sed -i 's/\r$//' /root/.bashrc
 #    llvm \
 #    cmake
 RUN apt-get update && apt-get install -y \
+    curl \
     make \
     cmake
 
 # Grading
 RUN apt-get install -y \
     git
-    
+
+RUN curl http://ee.usc.edu/~redekopp/ee109/avr.tar.gz -o /tmp/avr.tar.gz
+WORKDIR /usr/local
+RUN tar xfz /tmp/avr.tar.gz
+#RUN sudo usermod -a -G dialout user_name
+
 VOLUME ["/work"]
 WORKDIR /work
