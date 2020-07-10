@@ -20,6 +20,7 @@ RUN sed -i 's/\r$//' /root/.bashrc
 #    llvm \
 #    cmake
 RUN apt-get update && apt-get install -y \
+    nano \
     curl \
     make \
     cmake
