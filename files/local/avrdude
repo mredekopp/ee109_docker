@@ -1,0 +1,3 @@
+#!/bin/sh
+AVRDIR="/usr/local/avr"
+exec -a "$0" "$AVRDIR/bin/avrdude" "-C" "$AVRDIR/etc/avrdude.conf" "$@"
