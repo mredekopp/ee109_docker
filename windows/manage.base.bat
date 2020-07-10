@@ -68,7 +68,7 @@ if exist "%container%" (
 exit /b 0
 
 :docker_run_command
-docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_PTRACE ee109 >"%container%"
+docker run -v "%work%":/work -d -t --device=/dev/ttyUSB0 --security-opt seccomp:unconfined --cap-add SYS_PTRACE ee109 >"%container%"
 exit /b 0
 
 :docker_run
@@ -88,7 +88,7 @@ if not exist %container% (
 exit /b 0
 
 :docker_admin_run_command
-docker run -v "%work%":/work -d -t --security-opt seccomp:unconfined --cap-add SYS_ADMIN ee109 >"%container%"
+docker run -v "%work%":/work -d -t --device=/dev/ttyUSB0 --security-opt seccomp:unconfined --cap-add SYS_ADMIN ee109 >"%container%"
 exit /b 0
 
 :docker_run_test

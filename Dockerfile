@@ -11,6 +11,7 @@ COPY files/root/* /root/
 # Make sure line endings are Unix
 # This changes nothing if core.autocrlf is set to input
 RUN sed -i 's/\r$//' /root/.bashrc
+RUN sed -i 's/\r$//' /usr/local/bin/avrdude
 
 #RUN apt-get update && apt-get install -y \
 #    clang \
@@ -21,6 +22,7 @@ RUN sed -i 's/\r$//' /root/.bashrc
 #    cmake
 RUN apt-get update && apt-get install -y \
     nano \
+    xxd \
     curl \
     make \
     cmake
